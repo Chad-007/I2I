@@ -1,9 +1,8 @@
 import { ethers } from "hardhat";
 
-const TOKEN_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-const TO ="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
-const AMOUNT = process.env.AMOUNT || "1000"; // whole tokens
-
+const TOKEN_ADDRESS = "0xB99DC9eCe1a05cd4459165d60DF65a59439Ae277";
+const TO ="0x59509999f636e4ec1e1E3Ff5c09AbFB0278C1329";
+const AMOUNT = process.env.AMOUNT || "1000"; 
 async function main() {
   const token = await ethers.getContractAt("I2IToken", TOKEN_ADDRESS);
   const tx = await token.mint(TO, ethers.parseUnits(AMOUNT, 18));

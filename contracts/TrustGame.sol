@@ -58,7 +58,7 @@ contract TrustGame is Ownable {
         emit GameJoined(gameId, msg.sender);
     }
 
-    // Optional helper to join the latest game without knowing the ID
+    
     function joinLatestGame() external {
         require(nextGameId > 0, "No games created yet");
         joinGame(nextGameId - 1);
@@ -87,7 +87,7 @@ contract TrustGame is Ownable {
             _resolve(gameId);
         }
     }
-    // allocate reward based on the decision
+    
     function _resolve(uint256 gameId) internal {
         Game storage g = games[gameId];
         g.active = false;

@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract I2IToken is ERC20, Ownable {
     constructor(uint256 initialSupply, address initialOwner)
         ERC20("i2i", "I2I")
-        Ownable(initialOwner)   // ✅ Pass initialOwner
+        Ownable(initialOwner)   
     {
         require(initialOwner != address(0), "bad owner");
         _mint(initialOwner, initialSupply);
