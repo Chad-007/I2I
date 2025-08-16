@@ -4,7 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:faucet:local": "hardhat run scripts/deploy_fauset.ts --network localhost",
+    "seed:faucet:local": "hardhat run scripts/seed_fauset.ts --network localhost",
+    "mint:local": "hardhat run scripts/mint.ts --network localhost",
+    "own:local": "hardhat run scripts/transfer_ownership.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:faucet:sepolia": "hardhat run scripts/deploy_fauset.ts --network sepolia",
+    "seed:faucet:sepolia": "hardhat run scripts/seed_fauset.ts --network sepolia",
+    "own:sepolia": "hardhat run scripts/transfer_ownership.js --network sepolia",
+    "mint:sepolia": "hardhat run scripts/mint.ts --network sepolia",
+    "verify:token": "hardhat verify --network sepolia $TOKEN_ADDRESS $INITIAL_SUPPLY $OWNER",
+    "verify:faucet": "hardhat verify --network sepolia $FAUCET_ADDRESS $TOKEN_ADDRESS $OWNER"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +27,7 @@
     "hardhat": "^2.26.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.4.0"
+    "@openzeppelin/contracts": "^5.4.0",
+    "dotenv": "^17.2.1"
   }
 }
