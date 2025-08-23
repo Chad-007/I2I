@@ -94,12 +94,16 @@ contract TrustGame is Ownable {
         uint256 pot = stakeAmount * 2;
         address winner;
         if (g.moveA == Move.NoTrust) {
+            // No trust, both get their stake back
             token.transfer(g.playerA, stakeAmount);
             token.transfer(g.playerB, stakeAmount);
         } else if (g.moveA == Move.Trust && g.moveB == Move.Share) {
-            uint256 reward = pot / 2 + (pot / 10);
-            token.transfer(g.playerA, reward);
-            token.transfer(g.playerB, reward);
+            // Both cooperate, they share the pot with a small bonus split equally
+            // Each gets their stake back plus half of the cooperative bonus (10% of total pot)
+            uint256 bonus = pot / 10; // 10% bonus for cooperation
+            uint256 baseReward = stakeAmount + (bonus / 2); // Stake + half the bonus each
+            token.transfer(g.playerA, baseReward);
+            token.transfer(g.playerB, baseReward);
         } else if (g.moveA == Move.Trust && g.moveB == Move.Betray) {
             uint256 betrayerCut = (pot * 3) / 4;
             uint256 trusterCut = pot - betrayerCut;
