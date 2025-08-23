@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 
-const TOKEN_ADDRESS = "0xB99DC9eCe1a05cd4459165d60DF65a59439Ae277";
+const TOKEN_ADDRESS = " ";
 const TO ="0x59509999f636e4ec1e1E3Ff5c09AbFB0278C1329";
 const AMOUNT = process.env.AMOUNT || "1000"; 
 async function main() {
